@@ -48,7 +48,7 @@ You can stop when you feel the code is good enough, something you can come back 
 
 ## Credits and other programming languages
 
-This kata is a PHP port of [the original Incomprehensible Finder Refactoring Kata](https://github.com/OdeToCode/Katas/tree/master/Refactoring) created by [K. Scott Allen](https://github.com/OdeToCode).
+This kata is a Scala port of [the original Incomprehensible Finder Refactoring Kata](https://github.com/OdeToCode/Katas/tree/master/Refactoring) created by [K. Scott Allen](https://github.com/OdeToCode).
 
 You can also find the kata in different programming languages in isolated repositories just ready to clone and enjoy: 
 * [Java](https://github.com/DoDevJutsu/incomprehensible-finder-refactoring-java)
