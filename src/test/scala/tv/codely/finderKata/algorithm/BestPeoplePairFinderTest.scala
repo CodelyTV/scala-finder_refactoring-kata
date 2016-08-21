@@ -29,83 +29,82 @@ final class BestPeoplePairFinderTest extends WordSpec with BeforeAndAfterEach {
 
   "Finder" should {
     "Return empty results when given empty list" in {
-      val list = new ArrayList[Person]()
+      val people = new ArrayList[Person]()
 
-      val finder = new BestPeoplePairFinder(list)
+      val finder = new BestPeoplePairFinder(people)
 
-      val result = finder.Find(PeoplePairCriterion.ClosestBirthDate)
+      val peoplePairFound = finder.Find(PeoplePairCriterion.ClosestBirthDate)
 
-      result.person1 shouldBe null
-      result.person2 shouldBe null
+      peoplePairFound.person1 shouldBe null
+      peoplePairFound.person2 shouldBe null
     }
 
     "Return empty results when given one person" in {
-      val list = new ArrayList[Person]()
-      list.add(from1950)
+      val people = new ArrayList[Person]()
+      people.add(from1950)
 
-      val finder = new BestPeoplePairFinder(list)
+      val finder = new BestPeoplePairFinder(people)
 
-      val result = finder.Find(PeoplePairCriterion.ClosestBirthDate)
+      val peoplePairFound = finder.Find(PeoplePairCriterion.ClosestBirthDate)
 
-      result.person1 shouldBe null
-      result.person2 shouldBe null
+      peoplePairFound.person1 shouldBe null
+      peoplePairFound.person2 shouldBe null
     }
 
     "Return closest two for two people" in {
-      val list = new ArrayList[Person]()
-      list.add(from1950)
-      list.add(from1952)
+      val people = new ArrayList[Person]()
+      people.add(from1950)
+      people.add(from1952)
 
-      val finder = new BestPeoplePairFinder(list)
+      val finder = new BestPeoplePairFinder(people)
 
-      val result = finder.Find(PeoplePairCriterion.ClosestBirthDate)
+      val peoplePairFound = finder.Find(PeoplePairCriterion.ClosestBirthDate)
 
-      result.person1 shouldBe from1950
-      result.person2 shouldBe from1952
+      peoplePairFound.person1 shouldBe from1950
+      peoplePairFound.person2 shouldBe from1952
     }
 
     "Return furthest two for two people" in {
-      val list = new ArrayList[Person]()
-      list.add(from1979)
-      list.add(from1952)
+      val people = new ArrayList[Person]()
+      people.add(from1979)
+      people.add(from1952)
 
-      val finder = new BestPeoplePairFinder(list)
+      val finder = new BestPeoplePairFinder(people)
 
-      val result = finder.Find(PeoplePairCriterion.FurthestBirthDate)
+      val peoplePairFound = finder.Find(PeoplePairCriterion.FurthestBirthDate)
 
-      result.person1 shouldBe from1952
-      result.person2 shouldBe from1979
+      peoplePairFound.person1 shouldBe from1952
+      peoplePairFound.person2 shouldBe from1979
     }
 
     "Return furthest two for four people" in {
-      val list = new ArrayList[Person]()
-      list.add(from1950)
-      list.add(from1982)
-      list.add(from1979)
-      list.add(from1952)
+      val people = new ArrayList[Person]()
+      people.add(from1950)
+      people.add(from1982)
+      people.add(from1979)
+      people.add(from1952)
 
-      val finder = new BestPeoplePairFinder(list)
+      val finder = new BestPeoplePairFinder(people)
 
-      val result = finder.Find(PeoplePairCriterion.FurthestBirthDate)
+      val peoplePairFound = finder.Find(PeoplePairCriterion.FurthestBirthDate)
 
-      result.person1 shouldBe from1950
-      result.person2 shouldBe from1982
+      peoplePairFound.person1 shouldBe from1950
+      peoplePairFound.person2 shouldBe from1982
     }
 
     "Return closest two for four people" in {
-      val list = new ArrayList[Person]()
-      list.add(from1950)
-      list.add(from1982)
-      list.add(from1979)
-      list.add(from1952)
+      val people = new ArrayList[Person]()
+      people.add(from1950)
+      people.add(from1982)
+      people.add(from1979)
+      people.add(from1952)
 
-      val finder = new BestPeoplePairFinder(list)
+      val finder = new BestPeoplePairFinder(people)
 
-      val result = finder.Find(PeoplePairCriterion.ClosestBirthDate)
+      val peoplePairFound = finder.Find(PeoplePairCriterion.ClosestBirthDate)
 
-
-      result.person1 shouldBe from1950
-      result.person2 shouldBe from1952
+      peoplePairFound.person1 shouldBe from1950
+      peoplePairFound.person2 shouldBe from1952
     }
   }
 }
