@@ -6,26 +6,12 @@ import com.github.nscala_time.time.Imports._
 import org.scalatest._
 import org.scalatest.Matchers._
 
-final class BestPeoplePairFinderTest extends WordSpec with BeforeAndAfterEach {
+final class BestPeoplePairFinderTest extends WordSpec {
 
-  var from1950: Person = new Person()
-  var from1952: Person = new Person()
-  var from1982: Person = new Person()
-  var from1979: Person = new Person()
-
-  override def beforeEach(): Unit = {
-    from1950.name = "Sue"
-    from1950.birthDate = DateTime.parse("1950-01-01")
-
-    from1952.name = "Greg"
-    from1952.birthDate = DateTime.parse("1952-05-01")
-
-    from1982.name = "Sarah"
-    from1982.birthDate = DateTime.parse("1982-01-01")
-
-    from1979.name = "Mike"
-    from1979.birthDate = DateTime.parse("1979-01-01")
-  }
+  val from1950: Person = Person("Sue", DateTime.parse("1950-01-01"))
+  val from1952: Person = Person("Greg", DateTime.parse("1952-05-01"))
+  val from1982: Person = Person("Sarah", DateTime.parse("1982-01-01"))
+  val from1979: Person = Person("Mike", DateTime.parse("1979-01-01"))
 
   "Finder" should {
     "Return empty results when given empty list" in {
