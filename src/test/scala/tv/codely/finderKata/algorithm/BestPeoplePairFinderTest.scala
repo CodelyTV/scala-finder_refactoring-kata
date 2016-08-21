@@ -9,10 +9,10 @@ import org.scalatest.OptionValues._
 
 final class BestPeoplePairFinderTest extends WordSpec {
 
-  val from1950: Person = Person("Sue", DateTime.parse("1950-01-01"))
-  val from1952: Person = Person("Greg", DateTime.parse("1952-05-01"))
-  val from1982: Person = Person("Sarah", DateTime.parse("1982-01-01"))
-  val from1979: Person = Person("Mike", DateTime.parse("1979-01-01"))
+  val from1950 = Person(PersonName("Sue"), DateTime.parse("1950-01-01"))
+  val from1952 = Person(PersonName("Greg"), DateTime.parse("1952-05-01"))
+  val from1982 = Person(PersonName("Sarah"), DateTime.parse("1982-01-01"))
+  val from1979 = Person(PersonName("Mike"), DateTime.parse("1979-01-01"))
 
   "Finder" should {
     "return none when given empty list" in {
