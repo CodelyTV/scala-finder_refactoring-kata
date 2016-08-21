@@ -3,9 +3,9 @@ package tv.codely.finderKata.algorithm
 import java.util
 import java.util.ArrayList
 
-import tv.codely.finderKata.algorithm.FT.FT
+import scala.collection.JavaConverters._
 
-import collection.JavaConversions._
+import tv.codely.finderKata.algorithm.FT.FT
 
 class Finder(private val _p: util.List[Thing]) {
 
@@ -33,7 +33,7 @@ class Finder(private val _p: util.List[Thing]) {
 
     var answer: F = tr.get(0)
 
-    for (result: F <- tr) ft match {
+    for (result: F <- tr.asScala) ft match {
       case FT.One => if (result.D < answer.D) {
         answer = result
       }
