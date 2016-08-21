@@ -7,41 +7,47 @@ import scala.collection.JavaConverters._
 
 import tv.codely.finderKata.algorithm.PeoplePairCriterion.PeoplePairCriterion
 
-class BestPeoplePairFinder(private val _p: util.List[Person]) {
+class BestPeoplePairFinder(private val allPeople: util.List[Person]) {
 
   def Find(pairCriterion: PeoplePairCriterion): PeoplePair = {
-    val tr = new ArrayList[PeoplePair]()
+    val allPeoplePairs = new ArrayList[PeoplePair]()
 
-    for (i <- 0 until _p.size - 1; j <- i + 1 until _p.size) {
-      val r: PeoplePair = new PeoplePair()
+    for (currentPersonIteration <- 0 until allPeople.size - 1;
+         personToPairIteration <- currentPersonIteration + 1 until allPeople.size) {
+      val peoplePair: PeoplePair = new PeoplePair()
 
-      if (_p.get(i).birthDate.getMillis < _p.get(j).birthDate.getMillis) {
-        r.person1 = _p.get(i)
-        r.person2 = _p.get(j)
+      if (allPeople.get(currentPersonIteration).birthDate.getMillis
+          < allPeople.get(personToPairIteration).birthDate.getMillis) {
+        peoplePair.person1 = allPeople.get(currentPersonIteration)
+        peoplePair.person2 = allPeople.get(personToPairIteration)
       } else {
-        r.person1 = _p.get(j)
-        r.person2 = _p.get(i)
+        peoplePair.person1 = allPeople.get(personToPairIteration)
+        peoplePair.person2 = allPeople.get(currentPersonIteration)
       }
 
-      r.birthDatesDistanceInSeconds = r.person2.birthDate.getMillis - r.person1.birthDate.getMillis
-      tr.add(r)
+      peoplePair.birthDatesDistanceInSeconds =
+        peoplePair.person2.birthDate.getMillis - peoplePair.person1.birthDate.getMillis
+
+      allPeoplePairs.add(peoplePair)
     }
 
-    if (tr.size < 1) {
+    if (allPeoplePairs.size < 1) {
       return new PeoplePair()
     }
 
-    var answer: PeoplePair = tr.get(0)
+    var bestPeoplePair: PeoplePair = allPeoplePairs.get(0)
 
-    for (result: PeoplePair <- tr.asScala) pairCriterion match {
-      case PeoplePairCriterion.ClosestBirthDate => if (result.birthDatesDistanceInSeconds < answer.birthDatesDistanceInSeconds) {
-        answer = result
+    for (peoplePair: PeoplePair <- allPeoplePairs.asScala) pairCriterion match {
+      case PeoplePairCriterion.ClosestBirthDate =>
+        if (peoplePair.birthDatesDistanceInSeconds < bestPeoplePair.birthDatesDistanceInSeconds) {
+        bestPeoplePair = peoplePair
       }
-      case PeoplePairCriterion.FurthestBirthDate => if (result.birthDatesDistanceInSeconds > answer.birthDatesDistanceInSeconds) {
-        answer = result
+      case PeoplePairCriterion.FurthestBirthDate =>
+        if (peoplePair.birthDatesDistanceInSeconds > bestPeoplePair.birthDatesDistanceInSeconds) {
+        bestPeoplePair = peoplePair
       }
     }
 
-    answer
+    bestPeoplePair
   }
 }
