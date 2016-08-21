@@ -2,7 +2,7 @@ package tv.codely.finderKata.algorithm
 
 import com.github.nscala_time.time.Imports._
 
-class Thing {
+class Person {
 
   var name: String = _
 
