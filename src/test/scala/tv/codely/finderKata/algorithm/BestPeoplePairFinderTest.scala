@@ -5,6 +5,7 @@ import java.util.ArrayList
 import com.github.nscala_time.time.Imports._
 import org.scalatest._
 import org.scalatest.Matchers._
+import org.scalatest.OptionValues._
 
 final class BestPeoplePairFinderTest extends WordSpec {
 
@@ -14,18 +15,17 @@ final class BestPeoplePairFinderTest extends WordSpec {
   val from1979: Person = Person("Mike", DateTime.parse("1979-01-01"))
 
   "Finder" should {
-    "Return empty results when given empty list" in {
+    "return none when given empty list" in {
       val people = new ArrayList[Person]()
 
       val finder = new BestPeoplePairFinder(people)
 
       val peoplePairFound = finder.Find(PeoplePairCriterion.ClosestBirthDate)
 
-      peoplePairFound.person1 shouldBe null
-      peoplePairFound.person2 shouldBe null
+      peoplePairFound shouldBe None
     }
 
-    "Return empty results when given one person" in {
+    "return none when given one person" in {
       val people = new ArrayList[Person]()
       people.add(from1950)
 
@@ -33,11 +33,10 @@ final class BestPeoplePairFinderTest extends WordSpec {
 
       val peoplePairFound = finder.Find(PeoplePairCriterion.ClosestBirthDate)
 
-      peoplePairFound.person1 shouldBe null
-      peoplePairFound.person2 shouldBe null
+      peoplePairFound shouldBe None
     }
 
-    "Return closest two for two people" in {
+    "return closest two for two people" in {
       val people = new ArrayList[Person]()
       people.add(from1950)
       people.add(from1952)
@@ -46,11 +45,12 @@ final class BestPeoplePairFinderTest extends WordSpec {
 
       val peoplePairFound = finder.Find(PeoplePairCriterion.ClosestBirthDate)
 
-      peoplePairFound.person1 shouldBe from1950
-      peoplePairFound.person2 shouldBe from1952
+      peoplePairFound shouldBe defined
+      peoplePairFound.value.person1 shouldBe from1950
+      peoplePairFound.value.person2 shouldBe from1952
     }
 
-    "Return furthest two for two people" in {
+    "return furthest two for two people" in {
       val people = new ArrayList[Person]()
       people.add(from1979)
       people.add(from1952)
@@ -59,11 +59,12 @@ final class BestPeoplePairFinderTest extends WordSpec {
 
       val peoplePairFound = finder.Find(PeoplePairCriterion.FurthestBirthDate)
 
-      peoplePairFound.person1 shouldBe from1952
-      peoplePairFound.person2 shouldBe from1979
+      peoplePairFound shouldBe defined
+      peoplePairFound.value.person1 shouldBe from1952
+      peoplePairFound.value.person2 shouldBe from1979
     }
 
-    "Return furthest two for four people" in {
+    "return furthest two for four people" in {
       val people = new ArrayList[Person]()
       people.add(from1950)
       people.add(from1982)
@@ -74,11 +75,12 @@ final class BestPeoplePairFinderTest extends WordSpec {
 
       val peoplePairFound = finder.Find(PeoplePairCriterion.FurthestBirthDate)
 
-      peoplePairFound.person1 shouldBe from1950
-      peoplePairFound.person2 shouldBe from1982
+      peoplePairFound shouldBe defined
+      peoplePairFound.value.person1 shouldBe from1950
+      peoplePairFound.value.person2 shouldBe from1982
     }
 
-    "Return closest two for four people" in {
+    "return closest two for four people" in {
       val people = new ArrayList[Person]()
       people.add(from1950)
       people.add(from1982)
@@ -89,8 +91,9 @@ final class BestPeoplePairFinderTest extends WordSpec {
 
       val peoplePairFound = finder.Find(PeoplePairCriterion.ClosestBirthDate)
 
-      peoplePairFound.person1 shouldBe from1950
-      peoplePairFound.person2 shouldBe from1952
+      peoplePairFound shouldBe defined
+      peoplePairFound.value.person1 shouldBe from1950
+      peoplePairFound.value.person2 shouldBe from1952
     }
   }
 }
