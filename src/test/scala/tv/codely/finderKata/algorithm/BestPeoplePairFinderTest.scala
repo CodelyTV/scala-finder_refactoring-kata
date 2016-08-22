@@ -16,9 +16,7 @@ final class BestPeoplePairFinderTest extends WordSpec {
     "return none when given empty list" in {
       val people = Seq.empty[Person]
 
-      val finder = new BestPeoplePairFinder(people)
-
-      val peoplePairFound = finder.find(ClosestBirthDateCriterion)
+      val peoplePairFound = (new BestPeoplePairFinder).find(people, ClosestBirthDateCriterion)
 
       peoplePairFound shouldBe None
     }
@@ -26,9 +24,7 @@ final class BestPeoplePairFinderTest extends WordSpec {
     "return none when given one person" in {
       val people = Seq(from1950)
 
-      val finder = new BestPeoplePairFinder(people)
-
-      val peoplePairFound = finder.find(ClosestBirthDateCriterion)
+      val peoplePairFound = (new BestPeoplePairFinder).find(people, ClosestBirthDateCriterion)
 
       peoplePairFound shouldBe None
     }
@@ -36,9 +32,7 @@ final class BestPeoplePairFinderTest extends WordSpec {
     "return closest two for two people" in {
       val people = Seq(from1950, from1952)
 
-      val finder = new BestPeoplePairFinder(people)
-
-      val peoplePairFound = finder.find(ClosestBirthDateCriterion)
+      val peoplePairFound = (new BestPeoplePairFinder).find(people, ClosestBirthDateCriterion)
 
       peoplePairFound shouldBe defined
       peoplePairFound.value.younger shouldBe from1950
@@ -48,9 +42,7 @@ final class BestPeoplePairFinderTest extends WordSpec {
     "return furthest two for two people" in {
       val people = Seq(from1979, from1952)
 
-      val finder = new BestPeoplePairFinder(people)
-
-      val peoplePairFound = finder.find(FurthestBirthDateCriterion)
+      val peoplePairFound = (new BestPeoplePairFinder).find(people, FurthestBirthDateCriterion)
 
       peoplePairFound shouldBe defined
       peoplePairFound.value.younger shouldBe from1952
@@ -60,9 +52,7 @@ final class BestPeoplePairFinderTest extends WordSpec {
     "return furthest two for four people" in {
       val people = Seq(from1950, from1982, from1979, from1952)
 
-      val finder = new BestPeoplePairFinder(people)
-
-      val peoplePairFound = finder.find(FurthestBirthDateCriterion)
+      val peoplePairFound = (new BestPeoplePairFinder).find(people, FurthestBirthDateCriterion)
 
       peoplePairFound shouldBe defined
       peoplePairFound.value.younger shouldBe from1950
@@ -72,9 +62,7 @@ final class BestPeoplePairFinderTest extends WordSpec {
     "return closest two for four people" in {
       val people = Seq(from1950, from1982, from1979, from1952)
 
-      val finder = new BestPeoplePairFinder(people)
-
-      val peoplePairFound = finder.find(ClosestBirthDateCriterion)
+      val peoplePairFound = (new BestPeoplePairFinder).find(people, ClosestBirthDateCriterion)
 
       peoplePairFound shouldBe defined
       peoplePairFound.value.younger shouldBe from1950

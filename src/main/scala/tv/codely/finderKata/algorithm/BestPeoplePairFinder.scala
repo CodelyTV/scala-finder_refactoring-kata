@@ -1,8 +1,7 @@
 package tv.codely.finderKata.algorithm
 
-class BestPeoplePairFinder(people: Seq[Person]) {
-
-  def find(peoplePairOrdering: Ordering[PeoplePair]): Option[PeoplePair] = {
+final class BestPeoplePairFinder() {
+  def find(people: Seq[Person], peoplePairCriterion: Ordering[PeoplePair]): Option[PeoplePair] = {
     if (people.size < 2) {
       None
     } else {
@@ -13,7 +12,7 @@ class BestPeoplePairFinder(people: Seq[Person]) {
       }
 
       val bestPeoplePair = peoplePairs.reduce { (bestPeoplePair, candidatePeoplePair) =>
-        if (peoplePairOrdering.compare(bestPeoplePair, candidatePeoplePair) < 0) {
+        if (peoplePairCriterion.compare(bestPeoplePair, candidatePeoplePair) < 0) {
           candidatePeoplePair
         } else {
           bestPeoplePair
