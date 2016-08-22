@@ -7,4 +7,6 @@ final case class PersonName(rawName: String) {
   require(!rawName.forall(_.isDigit), "Person name can't be all digits.")
 }
 
-final case class Person(name: PersonName, birthDate: DateTime)
+final case class Person(name: PersonName, birthDate: DateTime) extends Ordered[Person] {
+  override def compare(candidate: Person): Int = birthDate.compare(candidate.birthDate)
+}

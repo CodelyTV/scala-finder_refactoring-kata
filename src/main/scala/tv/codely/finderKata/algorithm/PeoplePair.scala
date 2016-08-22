@@ -1,7 +1,11 @@
 package tv.codely.finderKata.algorithm
 
-final case class PeoplePair(person1: Person, person2: Person) {
+object PeoplePair {
+  val numberOfPeopleInAPair = 2
+}
+
+final case class PeoplePair(younger: Person, older: Person) {
   val birthDatesDistanceInSeconds: Long = {
-    person2.birthDate.getMillis - person1.birthDate.getMillis
+    older.birthDate.getMillis - younger.birthDate.getMillis
   }
 }
