@@ -18,7 +18,7 @@ final class BestPeoplePairFinderTest extends WordSpec {
 
       val finder = new BestPeoplePairFinder(people)
 
-      val peoplePairFound = finder.Find(PeoplePairCriterion.ClosestBirthDate)
+      val peoplePairFound = finder.find(ClosestBirthDateCriterion)
 
       peoplePairFound shouldBe None
     }
@@ -28,7 +28,7 @@ final class BestPeoplePairFinderTest extends WordSpec {
 
       val finder = new BestPeoplePairFinder(people)
 
-      val peoplePairFound = finder.Find(PeoplePairCriterion.ClosestBirthDate)
+      val peoplePairFound = finder.find(ClosestBirthDateCriterion)
 
       peoplePairFound shouldBe None
     }
@@ -38,7 +38,7 @@ final class BestPeoplePairFinderTest extends WordSpec {
 
       val finder = new BestPeoplePairFinder(people)
 
-      val peoplePairFound = finder.Find(PeoplePairCriterion.ClosestBirthDate)
+      val peoplePairFound = finder.find(ClosestBirthDateCriterion)
 
       peoplePairFound shouldBe defined
       peoplePairFound.value.younger shouldBe from1950
@@ -50,7 +50,7 @@ final class BestPeoplePairFinderTest extends WordSpec {
 
       val finder = new BestPeoplePairFinder(people)
 
-      val peoplePairFound = finder.Find(PeoplePairCriterion.FurthestBirthDate)
+      val peoplePairFound = finder.find(FurthestBirthDateCriterion)
 
       peoplePairFound shouldBe defined
       peoplePairFound.value.younger shouldBe from1952
@@ -62,7 +62,7 @@ final class BestPeoplePairFinderTest extends WordSpec {
 
       val finder = new BestPeoplePairFinder(people)
 
-      val peoplePairFound = finder.Find(PeoplePairCriterion.FurthestBirthDate)
+      val peoplePairFound = finder.find(FurthestBirthDateCriterion)
 
       peoplePairFound shouldBe defined
       peoplePairFound.value.younger shouldBe from1950
@@ -74,7 +74,7 @@ final class BestPeoplePairFinderTest extends WordSpec {
 
       val finder = new BestPeoplePairFinder(people)
 
-      val peoplePairFound = finder.Find(PeoplePairCriterion.ClosestBirthDate)
+      val peoplePairFound = finder.find(ClosestBirthDateCriterion)
 
       peoplePairFound shouldBe defined
       peoplePairFound.value.younger shouldBe from1950

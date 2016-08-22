@@ -1,8 +1,11 @@
 package tv.codely.finderKata.algorithm
 
-object PeoplePairCriterion extends Enumeration {
-  type PeoplePairCriterion = Value
+object ClosestBirthDateCriterion extends Ordering[PeoplePair] {
+  def compare(base: PeoplePair, candidate: PeoplePair): Int =
+    candidate.birthDatesDistanceInSeconds.compare(base.birthDatesDistanceInSeconds)
+}
 
-  val ClosestBirthDate  = Value(1)
-  val FurthestBirthDate = Value(2)
+object FurthestBirthDateCriterion extends Ordering[PeoplePair] {
+  def compare(base: PeoplePair, candidate: PeoplePair): Int =
+    base.birthDatesDistanceInSeconds.compare(candidate.birthDatesDistanceInSeconds)
 }

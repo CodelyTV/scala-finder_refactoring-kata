@@ -1,10 +1,8 @@
 package tv.codely.finderKata.algorithm
 
-import tv.codely.finderKata.algorithm.PeoplePairCriterion.PeoplePairCriterion
-
 class BestPeoplePairFinder(people: Seq[Person]) {
 
-  def Find(peoplePairOrdering: PeoplePairCriterion): Option[PeoplePair] = {
+  def find(peoplePairOrdering: Ordering[PeoplePair]): Option[PeoplePair] = {
     if (people.size < 2) {
       None
     } else {
@@ -15,19 +13,10 @@ class BestPeoplePairFinder(people: Seq[Person]) {
       }
 
       val bestPeoplePair = peoplePairs.reduce { (bestPeoplePair, candidatePeoplePair) =>
-        peoplePairOrdering match {
-          case PeoplePairCriterion.ClosestBirthDate =>
-            if (candidatePeoplePair.birthDatesDistanceInSeconds < bestPeoplePair.birthDatesDistanceInSeconds) {
-              candidatePeoplePair
-            } else {
-              bestPeoplePair
-            }
-          case PeoplePairCriterion.FurthestBirthDate =>
-            if (candidatePeoplePair.birthDatesDistanceInSeconds > bestPeoplePair.birthDatesDistanceInSeconds) {
-              candidatePeoplePair
-            } else {
-              bestPeoplePair
-            }
+        if (peoplePairOrdering.compare(bestPeoplePair, candidatePeoplePair) < 0) {
+          candidatePeoplePair
+        } else {
+          bestPeoplePair
         }
       }
 
