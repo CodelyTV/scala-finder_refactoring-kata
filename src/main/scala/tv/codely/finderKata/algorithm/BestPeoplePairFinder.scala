@@ -2,9 +2,9 @@ package tv.codely.finderKata.algorithm
 
 final class BestPeoplePairFinder() {
   def find(people: Seq[Person], peoplePairCriterion: Ordering[PeoplePair]): Option[PeoplePair] = {
-    val canFindPeoplePairs = people.size < 2
+    val canFindPeoplePairs = people.size >= 2
 
-    if (canFindPeoplePairs) {
+    if (!canFindPeoplePairs) {
       None
     } else {
       val peoplePairs = people.combinations(PeoplePair.numberOfPeopleInAPair).map { peopleCombination =>
