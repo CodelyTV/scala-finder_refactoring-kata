@@ -1,4 +1,4 @@
-# Incomprehensible Finder Refactoring Scala
+# Incomprehensible Finder Refactoring Kata in Scala
  
 ## Introduction 
 
@@ -14,7 +14,7 @@ Try to put in practice all your scala knowledge making use of the most idiomatic
 
 ## How To Start
 
-1. Clone this repository `git clone https://github.com/CodelyTV/incomprehensible-finder-refactoring-kata-scala`
+1. Clone this repository `git clone https://github.com/CodelyTV/finder-refactoring-kata-scala`
 2. Install [SBT](http://www.scala-sbt.org/)
 3. Run SBT on the project directory `sbt`
 4. Run the tests with `t`. You also have available the `s` and `ts` commands which runs the [scalastyle](http://www.scalastyle.org/) over the production and test code.
@@ -48,13 +48,13 @@ You can stop when you feel the code is good enough, something you can come back 
 
 ## Credits and other programming languages
 
+You can also find the kata in different programming languages in isolated repositories just ready to clone and enjoy:
+
+* 🐘 [PHP](https://github.com/CodelyTV/finder-refactoring-kata-php)
+* 🦈 [C#](https://github.com/CodelyTV/finder-refactoring-kata-csharp)
+* ☕  [Java](https://github.com/DoDevJutsu/incomprehensible-finder-refactoring-java)
+* 🧬 [Scala](https://github.com/CodelyTV/finder-refactoring-kata-scala)
+
 This kata is a Scala port of [the original Incomprehensible Finder Refactoring Kata](https://github.com/OdeToCode/Katas/tree/master/Refactoring) created by [K. Scott Allen](https://github.com/OdeToCode).
 
-You can also find the kata in different programming languages in isolated repositories just ready to clone and enjoy: 
-* [Java](https://github.com/DoDevJutsu/incomprehensible-finder-refactoring-java)
-* [C#](https://github.com/DoDevJutsu/incomprehensible-finder-refactoring-c-sharp)
-* [PHP](https://github.com/CodelyTV/incomprehensible-finder-refactoring-kata)
-* [Scala](https://github.com/CodelyTV/incomprehensible-finder-refactoring-kata-scala)
-
-This port has been developed by [CodelyTV](http://codely.tv/) in order to have it available for the [Software Craftsmanship Barcelona Coding Dojo session](http://www.meetup.com/Barcelona-Software-Craftsmanship/events/233107734/).
-Come with us and have some fun if you're near Barcelona the next Monday, August 22nd!
+Port developed by [CodelyTV](https://codely.tv/) and [contributors](../../graphs/contributors) 😊
